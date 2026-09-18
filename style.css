@@ -1,0 +1,244 @@
+@import url("https://fonts.googleapis.com/css2?family=Yatra+One&family=Noto+Serif+Devanagari:wght@400;500;600;700&display=swap");
+
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #10050b;
+  --wine: #2b0a19;
+  --gold: #e4b95f;
+  --gold-light: #f6df9f;
+  --cream: #ffecc7;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  overflow-x: hidden;
+  font-family: "Noto Serif Devanagari", serif;
+}
+
+.page {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: 54px 34px 90px;
+  background:
+    radial-gradient(circle at 50% 32%, rgba(142, 45, 78, .22), transparent 34%),
+    radial-gradient(circle at 50% 85%, rgba(218, 165, 76, .08), transparent 42%),
+    linear-gradient(145deg, #090307, #2b0a19 50%, #0a0308);
+}
+
+/* Heavy temple-style frame */
+.temple-frame {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.temple-frame::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 3px double rgba(228,185,95,.9);
+  box-shadow:
+    inset 0 0 0 5px rgba(228,185,95,.06),
+    inset 0 0 30px rgba(228,185,95,.08),
+    0 0 22px rgba(228,185,95,.10);
+}
+
+.temple-frame::after {
+  content: "";
+  position: absolute;
+  inset: 25px;
+  border: 1px solid rgba(228,185,95,.55);
+}
+
+.arch {
+  position: absolute;
+  top: 32px;
+  bottom: 32px;
+  width: 70px;
+  border: 2px solid rgba(228,185,95,.55);
+  border-top-width: 7px;
+  border-bottom-width: 7px;
+  border-radius: 36px;
+  opacity: .75;
+}
+
+.arch-left { left: 31px; }
+.arch-right { right: 31px; }
+
+.frame-flower {
+  position: absolute;
+  color: var(--gold);
+  font-family: serif;
+  text-shadow: 0 0 14px rgba(228,185,95,.5);
+}
+
+.f1 { top: 18px; left: 20px; font-size: 28px; }
+.f2 { top: 18px; right: 20px; font-size: 28px; }
+.f3 { bottom: 18px; left: 20px; font-size: 25px; }
+.f4 { bottom: 18px; right: 20px; font-size: 25px; }
+
+.frame-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(246,223,159,.85);
+  background: var(--bg);
+  padding: 0 12px;
+  letter-spacing: 3px;
+}
+
+.frame-center.top { top: 21px; font-size: 15px; }
+.frame-center.bottom { bottom: 21px; font-size: 13px; }
+
+.content {
+  position: relative;
+  z-index: 5;
+  width: min(760px, 88vw);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.small-heading {
+  margin: 0 0 20px;
+  font-family: "Yatra One", "Noto Serif Devanagari", serif;
+  color: var(--gold-light);
+  font-size: clamp(18px, 4vw, 26px);
+  letter-spacing: 5px;
+  text-shadow: 0 0 14px rgba(246,223,159,.38);
+}
+
+.art-card {
+  position: relative;
+  width: min(600px, 88vw);
+  margin: 0 auto;
+  min-height: min(720px, 72vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.art-halo {
+  position: absolute;
+  width: 68%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(235,181,86,.14), transparent 65%);
+  filter: blur(18px);
+}
+
+#radhaCanvas {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 72vh;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 0 11px rgba(232,183,83,.18));
+}
+
+.message-area {
+  width: min(720px, 88vw);
+  margin: 12px auto 0;
+}
+
+.devanagari {
+  margin: 0;
+  font-family: "Yatra One", "Noto Serif Devanagari", serif;
+  color: var(--gold-light);
+  font-size: clamp(32px, 7vw, 54px);
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-shadow:
+    0 0 8px rgba(246,223,159,.65),
+    0 0 25px rgba(246,223,159,.25);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.devanagari.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.message {
+  display: none;
+  margin: 20px auto 0;
+  color: #f8e3b7;
+  font-family: "Yatra One", "Noto Serif Devanagari", serif;
+  font-size: clamp(18px, 4vw, 28px);
+  line-height: 1.9;
+  text-shadow:
+    0 0 7px rgba(248,227,183,.5),
+    0 0 18px rgba(248,227,183,.15);
+  animation: textIn 1.6s ease both;
+}
+
+.message span { display: block; }
+
+.message.special {
+  color: #f7d88d;
+  font-size: clamp(19px, 4.2vw, 29px);
+}
+
+.show { display: block; }
+
+@keyframes textIn {
+  from { opacity: 0; transform: translateY(13px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.petals {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.petal {
+  position: absolute;
+  top: -25px;
+  width: 10px;
+  height: 15px;
+  border-radius: 70% 30% 70% 30%;
+  background: #e6a0b1;
+  opacity: .75;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  from { transform: translate3d(0,-25px,0) rotate(0deg); opacity: 0; }
+  12% { opacity: .75; }
+  to { transform: translate3d(var(--drift),110vh,0) rotate(420deg); opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  .page { padding: 48px 20px 75px; }
+  .temple-frame::before { inset: 9px; }
+  .temple-frame::after { inset: 18px; }
+  .arch { width: 36px; top: 28px; bottom: 28px; }
+  .arch-left { left: 20px; }
+  .arch-right { right: 20px; }
+  .frame-center.bottom { bottom: 14px; }
+  .frame-center.top { top: 14px; }
+
+  .art-card {
+    min-height: 62vh;
+    width: 92vw;
+  }
+
+  #radhaCanvas { max-height: 62vh; }
+
+  .message { line-height: 1.7; }
+}
