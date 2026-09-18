@@ -1,0 +1,69 @@
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; overflow-x:hidden; color:#ffe9bd;
+  background:
+    radial-gradient(circle at 50% 15%,rgba(124,20,76,.34),transparent 34%),
+    radial-gradient(circle at 50% 70%,rgba(85,8,56,.28),transparent 38%),
+    linear-gradient(145deg,#09020b,#19040f 48%,#070109);
+  font-family:"Noto Serif Devanagari",serif;
+}
+body:before,body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0}
+body:before{background:radial-gradient(circle at 50% 50%,transparent 45%,rgba(0,0,0,.55) 100%)}
+body:after{opacity:.14;background-image:radial-gradient(#f7c96d 1px,transparent 1px);background-size:27px 27px}
+
+.temple-frame{position:fixed;inset:14px;z-index:20;pointer-events:none;border:2px solid rgba(234,180,83,.78);box-shadow:0 0 0 6px rgba(92,24,53,.5),0 0 0 8px rgba(238,190,91,.2),inset 0 0 35px rgba(231,169,71,.08)}
+.temple-frame:before,.temple-frame:after{content:"";position:absolute;inset:8px;border:1px solid rgba(238,190,91,.5)}
+.temple-frame:after{inset:15px;border:1px dashed rgba(238,190,91,.22)}
+.corner{position:absolute;font-size:31px;color:#f3c76c;text-shadow:0 0 12px #f2ad42}
+.c1{top:-19px;left:-16px}.c2{top:-19px;right:-16px}.c3{bottom:-19px;left:-16px}.c4{bottom:-19px;right:-16px}
+.top-ornament,.bottom-ornament{position:absolute;left:50%;transform:translateX(-50%);padding:0 20px;background:#10030f;color:#e8bb63;white-space:nowrap;font-size:14px;letter-spacing:2px;text-shadow:0 0 8px rgba(240,182,75,.5)}
+.top-ornament{top:-12px}.bottom-ornament{bottom:-12px}
+.side-ornament{position:absolute;top:12%;bottom:12%;width:38px;border:1px solid rgba(230,180,88,.6);border-radius:28px;color:#e6b75c;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;font-size:19px;text-shadow:0 0 9px rgba(245,191,74,.7);background:linear-gradient(#16050f,#0b020b)}
+.side-ornament span{font-family:"Kalam",cursive;font-size:14px;writing-mode:vertical-rl}
+.side-ornament.left{left:17px}.side-ornament.right{right:17px}
+
+.page{position:relative;z-index:2;max-width:1000px;margin:0 auto;padding:58px 58px 110px;min-height:100vh}
+.hero{min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:30px 0 55px}
+.om{font-family:"Kalam",cursive;font-size:25px;color:#f5ce82;text-shadow:0 0 15px #f4b34f;margin-bottom:8px;opacity:.9}
+.radha-wrap{position:relative;width:min(78vw,520px);height:min(78vw,690px);display:grid;place-items:center}
+.radha-wrap canvas{position:relative;z-index:2;max-width:100%;max-height:100%;width:auto;height:auto;image-rendering:pixelated;image-rendering:crisp-edges;filter:contrast(1.08) saturate(1.08);opacity:1}
+.pixel-glow{position:absolute;z-index:1;width:70%;height:68%;border-radius:50%;background:radial-gradient(ellipse,rgba(255,193,67,.32),rgba(231,94,157,.12) 42%,transparent 72%);filter:blur(28px);animation:aura 4s ease-in-out infinite}
+@keyframes aura{50%{transform:scale(1.08);opacity:.72}}
+#radheTitle{margin:2px 0 2px;font-family:"Kalam","Noto Serif Devanagari",cursive;font-size:clamp(42px,8vw,74px);font-weight:700;color:#ffe5a6;text-shadow:0 0 5px #fff1c2,0 0 17px #e8a746,0 0 35px rgba(238,80,150,.45);opacity:0;transform:translateY(18px) scale(.92);transition:1.2s cubic-bezier(.2,.8,.2,1)}
+#radheTitle.visible{opacity:1;transform:none}
+.tiny-lotus{font-size:20px;color:#f2bd5c;margin-top:6px}
+.hint{margin:10px 0 0;color:rgba(255,222,173,.58);font-size:13px;opacity:0;transition:1s}
+.hint.show{opacity:1}
+
+.messages{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:32px;padding:10px 0 90px}
+.message-card{
+  position:relative;text-align:center;padding:38px 34px 42px;
+  background:linear-gradient(145deg,rgba(62,7,39,.76),rgba(25,3,20,.82));
+  border:1px solid rgba(235,184,91,.52);
+  box-shadow:0 0 0 5px rgba(124,33,70,.13),0 0 30px rgba(225,79,140,.08),inset 0 0 35px rgba(245,174,68,.05);
+  clip-path:polygon(0 14px,14px 0,calc(100% - 14px) 0,100% 14px,100% calc(100% - 14px),calc(100% - 14px) 100%,14px 100%,0 calc(100% - 14px));
+  opacity:0;transform:translateY(30px) scale(.94);filter:blur(8px);transition:opacity 1s ease,transform 1s cubic-bezier(.18,.8,.2,1),filter 1s ease;
+}
+.message-card:before,.message-card:after{content:"✦";position:absolute;color:#efbd61;font-size:22px;text-shadow:0 0 9px #e8a13f}
+.message-card:before{top:10px;left:15px}.message-card:after{bottom:8px;right:15px}
+.message-card.show{opacity:1;transform:none;filter:none}
+.message-card p{margin:10px auto 0;max-width:700px;font-family:"Kalam","Noto Serif Devanagari",cursive;font-size:clamp(21px,4vw,34px);line-height:1.75;color:#fff4dc;text-shadow:0 0 7px rgba(255,236,185,.82),0 0 20px rgba(244,153,63,.32)}
+.card-symbol{font-size:14px;letter-spacing:2px;color:#e7b65d;text-shadow:0 0 8px rgba(239,174,66,.6)}
+
+#petals{position:fixed;inset:0;z-index:15;pointer-events:none;overflow:hidden}
+.petal{position:absolute;top:-30px;width:9px;height:14px;border-radius:70% 15% 70% 15%;background:linear-gradient(135deg,#f6c0d5,#e95b9b);box-shadow:0 0 9px rgba(255,133,190,.7);animation:fall linear infinite}
+@keyframes fall{to{transform:translate3d(var(--drift),110vh,0) rotate(480deg)}}
+
+@media(max-width:650px){
+  .temple-frame{inset:8px}.side-ornament{width:25px;font-size:13px}.side-ornament.left{left:9px}.side-ornament.right{right:9px}
+  .top-ornament,.bottom-ornament{font-size:9px;letter-spacing:1px;padding:0 7px}
+  .page{padding:46px 35px 90px}
+  .hero{min-height:78vh}
+  .radha-wrap{width:min(76vw,390px);height:min(88vw,560px)}
+  .messages{gap:26px}
+  .message-card{padding:30px 21px 34px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}

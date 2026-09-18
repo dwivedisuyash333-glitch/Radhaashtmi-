@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10030f">
+  <title>श्री राधे • राधाष्टमी</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="temple-frame" aria-hidden="true">
+    <div class="corner c1">✦</div><div class="corner c2">✦</div>
+    <div class="corner c3">✦</div><div class="corner c4">✦</div>
+    <div class="side-ornament left">❧<span>ॐ</span>❧<span>श्री</span>❧</div>
+    <div class="side-ornament right">❧<span>राधे</span>❧<span>श्री</span>❧</div>
+    <div class="top-ornament">❖ ── ✧ ── ❈ ── ॐ ── ❈ ── ✧ ── ❖</div>
+    <div class="bottom-ornament">❖ ── ✧ ── ❈ ── श्री राधे ── ❈ ── ✧ ── ❖</div>
+  </div>
+
+  <main class="page">
+    <section class="hero" id="hero">
+      <div class="divine-aura"></div>
+      <div class="om">ॐ</div>
+
+      <div class="radha-wrap">
+        <div class="pixel-glow"></div>
+        <canvas id="radhaCanvas" aria-label="राधारानी का pixel-by-pixel रूप"></canvas>
+      </div>
+
+      <h1 id="radheTitle">श्री राधे</h1>
+      <div class="tiny-lotus">❈</div>
+      <p class="hint" id="hint">राधारानी के दिव्य स्वरूप के साथ संदेश प्रकट होंगे…</p>
+    </section>
+
+    <section class="messages" aria-live="polite">
+      <article class="message-card" id="greeting">
+        <div class="card-symbol">॥ श्री राधे ॥</div>
+        <p>राधाष्टमी के पावन अवसर पर आपको हार्दिक शुभकामनाएँ।</p>
+      </article>
+
+      <article class="message-card" id="blessing">
+        <div class="card-symbol">राधा रानी की कृपा</div>
+        <p>सदैव आप दोनों पर बनी रहे, और आप दोनों को यूँ ही हमेशा साथ रखें।</p>
+      </article>
+
+      <article class="message-card" id="anniversary">
+        <div class="card-symbol">प्रेम और आशीर्वाद</div>
+        <p>स्वयं राधारानी की ओर से आप दोनों को 5 महीने पूरे होने पर ढेरों शुभकामनाएँ।</p>
+      </article>
+    </section>
+
+    <div id="petals" aria-hidden="true"></div>
+  </main>
+
+  <script src="radha_pixels.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
